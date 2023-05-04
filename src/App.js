@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./style.css";
+import img from "./image/bg.jpg";
 
 function App() {
+  const [Number, setNumber] = useState(100)
+  useEffect(() => {
+    Number > 0 && setTimeout(() => setNumber(Number - 1), 35);
+  }, [Number]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <main >
+        <img style={{ filter: `blur(${Number}px)` }} src={img} alt="" />
+        <h1 style={{ opacity: `${Number}` }}>{Number}%</h1>
+      </main>
+    </>
   );
 }
 
